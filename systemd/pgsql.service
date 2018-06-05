@@ -1,0 +1,13 @@
+[Unit]
+Description=uWSGI instance for pgsql.py
+After=network.target
+
+[Service]
+User=pgsql
+Group=nginx
+WorkingDirectory=/home/pgsql/pgcheck
+Environment="PATH=/home/pgsql/pgcheck/pgcheckenv/bin"
+ExecStart=/home/pgsql/pgcheck/pgcheckenv/bin/uwsgi --ini pgsql.ini
+
+[Install]
+WantedBy=multi-user.target
